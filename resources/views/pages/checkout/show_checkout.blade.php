@@ -46,14 +46,14 @@
        
         <div class="payment-options">
                 <span>
-                    <label><input type="checkbox"> Direct Bank Transfer</label>
+                    <label><input type="checkbox"> Thanh Toán Bằng Thẻ</label>
                 </span>
                 <span>
-                    <label><input type="checkbox"> Check Payment</label>
+                    <label><input type="checkbox"> Nhận Tiền Mặt</label>
                 </span>
-                <span>
+                {{-- <span>
                     <label><input type="checkbox"> Paypal</label>
-                </span>
+                </span> --}}
         </div>
 	</div>
 </section> <!--/#cart_items-->

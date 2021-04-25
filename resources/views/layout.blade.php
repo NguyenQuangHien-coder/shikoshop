@@ -90,15 +90,20 @@
 								{{-- Nút Thanh Toán cho khách vãng lai và user --}}
 								<?php
 									$customer_id = Session::get('customer_id');
-									if($customer_id != NULL) {							
+									$shipping_id = Session::get('shipping_id');
+									if($customer_id != NULL && $shipping_id == NULL) {							
 								?>
 								<li><a href="{{URL::to('/checkout')}}"><i class="fa fa-crosshairs"></i> Thanh Toán</a></li>
 								<?php
-									}else{
+									}elseif($customer_id != NULL && $shipping_id != NULL){
+								?>
+								<li><a href="{{URL::to('/payment')}}"><i class="fa fa-lock"></i> Thanh Toán</a></li>
+								<?php
+								} else {
 								?>
 								<li><a href="{{URL::to('/login-checkout')}}"><i class="fa fa-lock"></i> Thanh Toán</a></li>
 								<?php
-									}
+								}
 								?>				
 
 								<li><a href="{{URL::to('/show-cart')}}"><i class="fa fa-shopping-cart"></i> Giỏ Hàng</a></li>
@@ -126,7 +131,7 @@
 		<div class="header-bottom"><!--header-bottom-->
 			<div class="container">
 				<div class="row">
-					<div class="col-sm-9">
+					<div class="col-sm-8">
 						<div class="navbar-header">
 							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
 								<span class="sr-only">Toggle navigation</span>
@@ -153,10 +158,14 @@
 							</ul>
 						</div>
 					</div>
-					<div class="col-sm-3">
-						<div class="search_box pull-right">
-							<input type="text" placeholder="Tìm Kiếm..."/>
-						</div>
+					<div class="col-sm-4">
+						<form action="{{URL::to('tim-kiem')}}" method = "POST">
+							{{csrf_field()}}
+							<div class="search_box pull-right">
+								<input type="text" name="keywords_submit" style="background-image:none !important" placeholder="Tìm Kiếm..." />
+								<input type="submit" name="search_items" class="btn btn-default btn-sm" style="width:50px !important; background: #FE980F; color:whitesmoke" value= "Tìm">
+							</div>
+						</form>
 					</div>
 				</div>
 			</div>

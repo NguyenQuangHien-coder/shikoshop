@@ -23,6 +23,7 @@ use Illuminate\Support\Facades\Route;
 //Frontend*
 Route::get('/','App\Http\Controllers\HomeController@index');
 Route::get('/trangchu','App\Http\Controllers\HomeController@index');
+Route::post('/tim-kiem','App\Http\Controllers\HomeController@search');
 
 //Danh mục sản phẩm - Trang Chủ
 Route::get('/danh-muc-san-pham/{category_id}','App\Http\Controllers\CategoryProduct@show_category_home');
@@ -102,6 +103,10 @@ Route::post('/add-customer','App\Http\Controllers\CheckoutController@add_custome
 Route::get('/checkout','App\Http\Controllers\CheckoutController@checkout');
 //Lưu thông tin giao hàng
 Route::post('/save-checkout-customer','App\Http\Controllers\CheckoutController@save_checkout_customer');
+//Trang Thanh Toán
+Route::get('/payment','App\Http\Controllers\CheckoutController@payment');
+//Trang Order-Place
+Route::post('/order-place','App\Http\Controllers\CheckoutController@order_place');
 //Home*
 // Route::get('/danh-muc-san-pham/{category_id}','App\Http\Controllers\HomeController@');
 // Route::get('/thuong-hieu-san-pham/{brand_id}','App\Http\Controllers\HomeController@');
