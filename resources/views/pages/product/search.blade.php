@@ -3,6 +3,8 @@
 <div class="features_items"><!--features_items-->
     <h2 class="title text-center">Kết Quả Tìm Kiếm</h2>
     {{-- Biến all_product được tạo trong HomeController.php --}}
+    <form action="{{URL::to('/save-cart')}}" method="POST">
+        {{csrf_field()}}
     @foreach($search_product as $key => $all_product)
      <a href="{{URL::to('/chi-tiet-san-pham/'.$all_product->product_id)}}">
         <div class="col-sm-4">
@@ -12,7 +14,12 @@
                         <img src="{{URL::to('public/uploads/product/'.$all_product->product_image)}}" alt="" width="250px" height="250px"/>
                         <h2>{{number_format($all_product->product_price).' '.'VNĐ'}}</h2>
                         <p>{{$all_product->product_name}}</p>
-                        <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm Vào Giỏ</a>
+                        <input name="productid_hidden" type="hidden" min="1" max="99" value="{{$all_product->product_id}}" />
+                        <input name="qty" type="number" min="1" max="99" value="1" type="hidden" style="visibility: hidden !important; display:block"/>
+                        <button type="submit" class="btn btn-fefault cart">
+                            <i class="fa fa-shopping-cart"></i>
+                            Thêm Vào Giỏ
+                        </button>
                     </div>
                     {{-- <div class="product-overlay">
                         <div class="overlay-content">
@@ -31,7 +38,8 @@
             </div>
         </div>	
     </a>
-    @endforeach   											
+    @endforeach   		
+</form>												
 </div><!--features_items-->
 
 @endsection

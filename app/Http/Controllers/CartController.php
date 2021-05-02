@@ -36,8 +36,10 @@ class CartController extends Controller
     }
     public function show_cart() {
         //Gọi table category và brand (lấy danh mục và thương hiệu SP)
-        $cate_product = DB::table('tbl_category_product')->where('category_status','0')->orderby('category_id', 'desc')->get();  
-        $brand_product = DB::table('tbl_brand_product')->where('brand_status','0')->orderby('brand_id', 'desc')->get();  
+        // $cate_product = DB::table('tbl_category_product')->where('category_status','0')->orderby('category_id', 'desc')->get();  
+        // $brand_product = DB::table('tbl_brand_product')->where('brand_status','0')->orderby('brand_id', 'desc')->get();  
+        $cate_product = DB::table('tbl_category_product')->where('category_status','1')->orderby('category_id', 'desc')->get();  
+        $brand_product = DB::table('tbl_brand_product')->where('brand_status','1')->orderby('brand_id', 'desc')->get();  
         return view('pages.cart.show_cart')
         ->with('category',$cate_product)
         ->with('brand',$brand_product);
